@@ -64,10 +64,9 @@ export default class Table extends Component {
                 <td>{college.groupPrefix}</td>
                 <td>
                     {college.logo && (
-                        <img className="w-full" src={college.logo} alt={college.name} />
+                        <img className="w-full" src={college.logo} alt={college.name} width="50%" height="50%" align="center" />
                     )} 
                 </td>
-                {/* If ofsted rating good (<Table.Row warning> <Table.cell>{college.ofstedRating}</Table.cell> </Table.Row>) */}
                 <td>{college.ofstedRating}</td>
             </tr>
         )
@@ -126,7 +125,7 @@ export default class Table extends Component {
             return ( 
                 <div>
 
-                    <table className="table-fixed border-collapse">
+                    <table className="table-fixed">
                             <thead>
                                 <tr>
                                     <input
@@ -143,17 +142,11 @@ export default class Table extends Component {
                                     />
                                 </tr>
                                 <tr>
-                                    {/* <th className="w-1/12">Name</th> */}
-                                    <th>
-                                        Name
-                                        <button onClick={this.state.onSortChange}>
-                                            <i className={`fas fa-${sortTypes[currentSort].class}`}/>
-                                        </button>
-                                    </th>
+                                    <th className="w-1/12">Name</th>
                                     
                                     <th className="w-1/12">Prefix</th>
                                     
-                                    <th className="w-1/12">Logo</th>
+                                    <th className="w-1/12">Logo/Preroll</th>
                                    
                                     <th className="w-1/12">Ofsted Rating</th>
                                 </tr>

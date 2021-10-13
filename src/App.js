@@ -7,7 +7,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Partners</h1>
-        <Table/>
+          <div class="ag-theme-alpine">
+            <Table striped bordered hover/>
+          </div>
       </header>
     </div>
   );

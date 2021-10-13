@@ -1,9 +1,23 @@
-.App {
-  
+table {
+  width: 50%;
+  table-layout: fixed;
 }
 
-.App-header {  
+table tr th {
+  text-align: left;
+  background: rgb(201, 199, 199);
+  color: #000000;
+  border: 1px solid
+}
+
+table td {
+  text-align: center;
+  background: rgb(255, 255, 255);
+  color: black;
+  border: 1px solid
+}
+/* .App-header {  
   font-size: calc(10px + 2vmin);
   color: rgb(12, 1, 1);
   text-align: left;
-}
+} */
