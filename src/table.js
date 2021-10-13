@@ -120,7 +120,7 @@ export default class Table extends Component {
         }
 
         const { currentSort } = this.state
-        console.log(currentSort)
+        // console.log(currentSort)
             return ( 
                 <div>
 
@@ -157,20 +157,4 @@ export default class Table extends Component {
             )
             
         }
-    }
-// } const { column, data, direction } = this.state
-
-// return (
-//     <Table sortable celled fixed>
-//         <Table.Header>
-//             <Table.Row>
-//                 <Table.HeaderCell 
-//                     sorted={column === 'name' ? direction : null}
-//                     onClick={() => dispatch({ type: 'CHANGE_SORT', column: 'name' })}
-//                 >
-//                     Name
-//                 </Table.HeaderCell>
-//             </Table.Row>
-//         </Table.Header>
-//     </Table>
-// )
+}
