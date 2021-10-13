@@ -1,6 +1,5 @@
 import React , {Component } from 'react'
-import TableSorter from './TableSorter.js'
-// import { SortableHeader } from "./sortableTableHeader";
+// import TableSorter from './TableSorter.js'
 // import { Table } from 'semantic-ui-react'
 
 export default class Table extends Component {
@@ -9,7 +8,7 @@ export default class Table extends Component {
 // Create table displaying API data - DONE
 // Create Search bar - DONE
 // Create search bar for prefix - DONE
-// Create ascending/descending order for Prefix & Ofsted Rating - search 'enabling sorting on table header', look at semantic UI mentioned in task ReadMe
+// Create ascending/descending order for Prefix & Ofsted Rating - search 'enabling sorting on table header', look at semantic UI mentioned in task ReadMe - DONE
 // Create dropdown for Ofsted rating
 // Style table
 // //      - Headers are grey
@@ -95,15 +94,15 @@ export default class Table extends Component {
         const sortTypes = {
             up: {
                 class: 'sort-up',
-                fn: (a, b) => a.name - b.name
+                fn: (a, b) => a.name > b.name ? -1 : 1
             }, 
             down: {
                 class: 'sort-down',
-                fn: (a, b) => b.name - a.name
+                fn: (a, b) => a.name < b.name ? 1 : -1
             },
             default: {
                 class: 'sort',
-                fn: (a, b) => a
+                fn: (a, b) => 0
             }
         };
 
@@ -121,28 +120,26 @@ export default class Table extends Component {
         }
 
         const { currentSort } = this.state
-
+        console.log(currentSort)
             return ( 
                 <div>
 
                     <table className="table-fixed">
                             <thead>
-                                <tr>
                                     <input
                                         type="text"
                                         placeholder="Search partners"
                                         onChange={this.handleChange}
                                     />
-                                </tr>
-                                <tr>
                                     <input
                                         type="text"
                                         placeholder="Search prefix"
                                         onChange={this.handleChange}
                                     />
-                                </tr>
                                 <tr>
-                                    <th className="w-1/12">Name</th>
+                                    <th className="w-1/12" onClick={onSortChange}>
+                                            <i className={`fas fa-${sortTypes[currentSort].class}`}/>Name 
+                                    </th>
                                     
                                     <th className="w-1/12">Prefix</th>
                                     
@@ -158,7 +155,6 @@ export default class Table extends Component {
    
                 </div>
             )
-
             
         }
     }
