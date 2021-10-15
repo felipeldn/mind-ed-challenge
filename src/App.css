@@ -1,4 +1,4 @@
-table {
+/* table {
   width: 50%;
   table-layout: fixed;
 }
@@ -15,7 +15,7 @@ table td {
   background: rgb(255, 255, 255);
   color: black;
   border: 1px solid
-}
+} */
 /* .App-header {  
   font-size: calc(10px + 2vmin);
   color: rgb(12, 1, 1);

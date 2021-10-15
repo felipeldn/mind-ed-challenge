@@ -1,8 +1,9 @@
-import React , {Component } from 'react'
+import React , { Component } from 'react'
 // import TableSorter from './TableSorter.js'
-// import { Table } from 'semantic-ui-react'
+import { Table, Image, Input } from 'semantic-ui-react'
+// import { Image } from 'semantic-ui-react'
 
-export default class Table extends Component {
+export default class Partners extends Component {
 
 // Display API data - componentDidMount - pull specific elements - DONE
 // Create table displaying API data - DONE
@@ -57,17 +58,18 @@ export default class Table extends Component {
     }
 
     renderRow(college) {
+
         return (
-            <tr key={college.id}>
-                <td>{college.name}</td>
-                <td>{college.groupPrefix}</td>
-                <td>
+            <Table.Row key={college.id}>
+                <Table.Cell>{college.name}</Table.Cell>
+                <Table.Cell>{college.groupPrefix}</Table.Cell>
+                <Table.Cell>
                     {college.logo && (
-                        <img className="w-full" src={college.logo} alt={college.name} width="50%" height="50%" align="center" />
+                        <Image src={college.logo} alt={college.name} size="small"/>
                     )} 
-                </td>
-                <td>{college.ofstedRating}</td>
-            </tr>
+                </Table.Cell>
+                <Table.Cell>{college.ofstedRating}</Table.Cell>
+            </Table.Row>
         )
     }
 
@@ -98,7 +100,7 @@ export default class Table extends Component {
             }, 
             down: {
                 class: 'sort-down',
-                fn: (a, b) => a.name < b.name ? 1 : -1
+                fn: (a, b) => a.name < b.name ? -1 : 1
             },
             default: {
                 class: 'sort',
@@ -111,7 +113,7 @@ export default class Table extends Component {
             let nextSort;
 
             if (currentSort === 'down') nextSort = 'up';
-            else if (currentSort === 'up') nextSort = 'default';
+            else if (currentSort === 'up') nextSort = 'down';
             else if (currentSort === 'default') nextSort = 'down';
 
             this.setState({ 
@@ -124,34 +126,34 @@ export default class Table extends Component {
             return ( 
                 <div>
 
-                    <table className="table-fixed">
-                            <thead>
-                                    <input
+                                    <Input
                                         type="text"
                                         placeholder="Search partners"
                                         onChange={this.handleChange}
                                     />
-                                    <input
+                                    <Input
                                         type="text"
                                         placeholder="Search prefix"
                                         onChange={this.handleChange}
                                     />
-                                <tr>
-                                    <th className="w-1/12" onClick={onSortChange}>
-                                            <i className={`fas fa-${sortTypes[currentSort].class}`}/>Name 
-                                    </th>
+                    <Table celled>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell onClick={onSortChange}>
+                                        <i className={`fas fa-${sortTypes[currentSort].class}`}/>Name 
+                                    </Table.HeaderCell>
+                
+                                    <Table.HeaderCell>Prefix</Table.HeaderCell>
                                     
-                                    <th className="w-1/12">Prefix</th>
-                                    
-                                    <th className="w-1/12">Logo/Preroll</th>
+                                    <Table.HeaderCell>Logo/Preroll</Table.HeaderCell>
                                    
-                                    <th className="w-1/12">Ofsted Rating</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                                    <Table.HeaderCell>Ofsted Rating</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
                                 {[...filteredColleges].sort(sortTypes[currentSort].fn).map(college => this.renderRow(college))}
-                            </tbody>
-                        </table>
+                            </Table.Body>
+                    </Table>
    
                 </div>
             )

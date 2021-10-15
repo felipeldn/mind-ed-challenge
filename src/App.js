@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Table from './table.js';
+import Partners from './Partners.js';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <h1>Partners</h1>
           <div class="ag-theme-alpine">
-            <Table striped bordered hover/>
+            <Partners/>
           </div>
       </header>
     </div>
